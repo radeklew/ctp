@@ -8,6 +8,13 @@
 #include <netinet/in.h>
 #include <sys/uio.h>
 
+void handle_datagram(char *buffer, ssize_t n){
+  for(ssize_t i = 0; i < n; ++i){
+    std::cout << buffer[i];
+  }
+  std::cout << std::endl;
+}
+
 int main(int argc, char** argv){
 
   // Ideally, there should be two arguments, plus the name of the program.
@@ -62,9 +69,8 @@ int main(int argc, char** argv){
   } else if (count == sizeof(buffer)) {
     //add error check
   } else {
-    //handle_datagram(buffer, count);
+    handle_datagram(buffer, count);
   }
-  std::cout << buffer << "END" << std::endl;
   
   return 0;
 }
